@@ -30,17 +30,18 @@ const addInstruction = () => {
 }
 
 const calculateResult = () => {
-	let arrayCopy1 = instrArray.slice();
-	let arrayCopy2 = instrArray.slice();
-	let applyNumber = arrayCopy1.filter((instr)=>(instr.operator=="apply")).pop().number;
-	let arrayWithoutApply = arrayCopy2.filter((instr)=>(instr.operator!="apply"));
-	var result = applyNumber;
-	for (var i in instructions) {
-		result = window[i.operator](result, i.number);
+	let arrayCopy1 = instrArray;
+	let arrayCopy2 = instrArray;
+	let applyNumber = instrArray.filter((instr)=>(instr.operator=="apply")).pop().number;
+	let instrWithoutApply = instrArray.filter((instr)=>(instr.operator!="apply"));
+	var result = parseInt(applyNumber);
+	console.log(applyNumber);
+	console.log(instrWithoutApply);
+	for (var i of instrWithoutApply) {
+		console.log(i);
+		result = window[i.operator](result, parseInt(i.number));
 		console.log(result);
 	}
-	console.log(applyNumber);
-	console.log(arrayWithoutApply);
 	document.getElementById("result").innerHTML = result;
 }
 
