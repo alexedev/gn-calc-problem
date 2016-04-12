@@ -3,7 +3,10 @@ const btnReset = document.getElementById("btnReset");
 const btnAdd = document.getElementById("btnAdd");
 const resultOutput = document.getElementById("result");
 
-
+const optionAdd = new Option("Add", "add", false, false);
+const optionMultiply = new Option("Multiply", "multiply", false, false);
+const optionDivide = new Option("Divide", "divide", false, false);
+const optionApply = new Option("Apply", "apply", false, false);
 
 const addInstruction = () => {
 	let inputNumber = document.querySelector("input").value;
