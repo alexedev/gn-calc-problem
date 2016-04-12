@@ -29,29 +29,32 @@ const addInstruction = () => {
 	}
 }
 
-
 const calculateResult = () => {
-	let arrayToFiler = instrArray;
-	let applyNumber = arrayToFiler.filter((instr)=>(instr.operator=="apply")).pop();
-	let arrayWithoutApply = instrArray.filter((instr)=>(instr.operator!="apply"));
+	let arrayCopy1 = instrArray.slice();
+	let arrayCopy2 = instrArray.slice();
+	let applyNumber = arrayCopy1.filter((instr)=>(instr.operator=="apply")).pop().number;
+	let arrayWithoutApply = arrayCopy2.filter((instr)=>(instr.operator!="apply"));
+	var result = applyNumber;
+	for (var i in instructions) {
+		result = window[i.operator](result, i.number);
+		console.log(result);
+	}
 	console.log(applyNumber);
 	console.log(arrayWithoutApply);
-	for (instruction in instrArray) {
-		
-	}
+	document.getElementById("result").innerHTML = result;
 }
 
 
 btnAdd.addEventListener("click", (e) => {
-	addInstruction();
 	e.preventDefault();
+	addInstruction();
 	e.stopPropagation();
 });
 
 btnCalculate.addEventListener("click", (e) => {
+	e.preventDefault();
 	calculateResult();
 	console.log("Result is calculated");
-	e.preventDefault();
 });
 
 btnReset.addEventListener("click", (e) => {
