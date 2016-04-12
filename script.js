@@ -1,31 +1,34 @@
-var btnCalculate = document.getElementById("btnCalculate");
-var btnReset = document.getElementById("btnReset");
-var btnAdd = document.getElementById("btnAdd");
-var resultOutput = document.getElementById("result");
+const btnCalculate = document.getElementById("btnCalculate");
+const btnReset = document.getElementById("btnReset");
+const btnAdd = document.getElementById("btnAdd");
+const resultOutput = document.getElementById("result");
 
-var addInstruction = () => {
-	var inputNumber = document.querySelector("input").value;
+
+
+const addInstruction = () => {
+	let inputNumber = document.querySelector("input").value;
 	console.log("inputNumber was " + inputNumber);
 	console.log("Added new instruction to the list");
 	document.querySelector("input").value = "";
 	console.log("input is cleared");
 } 
-var calculateResult = () => {console.log("calculateResult function is called")} 
-var resetCalc = () => {console.log("resetCalc function is called")} 
+const calculateResult = () => {console.log("calculateResult function is called")} 
+const resetCalc = () => {console.log("resetCalc function is called")} 
 
 
-btnAdd.addEventListener("click", function(e) {
+btnAdd.addEventListener("click", (e) => {
 	addInstruction();
 	e.preventDefault();
+	e.stopPropagation();
 });
 
-btnCalculate.addEventListener("click", function(e) {
+btnCalculate.addEventListener("click", (e) => {
 	calculateResult();
 	console.log("Result is calculated");
 	e.preventDefault();
 });
 
-btnReset.addEventListener("click", function(e) {
+btnReset.addEventListener("click", (e) => {
 	resetCalc();
 	console.log("Calculator is reset");
 	e.preventDefault();
