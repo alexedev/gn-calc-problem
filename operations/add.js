@@ -3,3 +3,4 @@ document.getElementById("operators").appendChild(optionAdd);
 const funcAdd = (number) => {
 	console.log("added " + number);
 }
+
